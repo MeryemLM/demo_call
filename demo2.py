@@ -46,7 +46,7 @@ qa_interface = RetrievalQA.from_chain_type(
     retriever=retriever,
     return_source_documents=True,
 )
- assemblyai_api_key = "146c7980fa5a4b6c872033d97234500b"
+assemblyai_api_key = "146c7980fa5a4b6c872033d97234500b"
 
 # Function to transcribe audio
 def transcribe_audio(audio_path, assemblyai_api_key):
