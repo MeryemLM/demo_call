@@ -41,6 +41,7 @@ qa_interface = RetrievalQA.from_chain_type(
     chain_type="stuff",
     retriever=retriever,
     return_source_documents=True,
+    openai_api_key=openai_api_key,
 )
 
 # Function to record audio and return transcribed text
