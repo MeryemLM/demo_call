@@ -31,8 +31,8 @@ def extract_text_from_pdf(pdf_file_path):
 detected_text = extract_text_from_pdf("./objections.pdf")
 
 
-#os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
-openai.api_key = st.sidebar.text_input('Demo key', type='password')
+os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
+#openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 
 
  
