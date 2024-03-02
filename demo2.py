@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 # Streamlit page configuration
 st.set_page_config(layout="wide")
 # OpenAI API Key input
-openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+openai.api_key = st.sidebar.text_input('OpenAI API Key', type='password')
  
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_file_path):
