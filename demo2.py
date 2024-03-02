@@ -168,4 +168,20 @@ def main():
                 for utterance in transcript.utterances:
                    
                     st.write(f"<span style='color: blue;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
-                    prompt_message="Please understand the essence of the question, considering synonyms and different ways the question might be phrased. Provide the answer exactly as it appears in
+                    prompt_message="Please understand the essence of the question, considering synonyms and different ways the question might be phrased. Provide the answer exactly as it appears in the provided documents. If the exact information is not available, or you're not confident in the accuracy of the match, reply with 'None'."
+                    combined_query = f"{prompt_message}\n\nUser's query: {utterance.text}"
+                    # Use the combined query with the qa_interface
+                    response = qa_interface(combined_query)
+                    response_text = response["result"]
+                    if response_text.strip() != "None":
+                        st.markdown(f'<span style="color:green">Suggestion : </span> {response_text}', unsafe_allow_html=True)
+                    else :
+                        response_text = None
+                        pass
+ 
+        else:
+            # Message indicating to the user to upload a file
+            st.write("Please upload an audio file to start transcription.")
+
+if __name__ == "__main__":
+    main()
