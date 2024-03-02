@@ -30,13 +30,12 @@ def analyze_sentiment_voice(text):
     return sentiment_label
 
 # Set up OpenAI API key
-#openai.api_key = st.sidebar.text_input('Demo key', type='password')
+
+openai.api_key = st.sidebar.text_input('Demo key', type='password')
 
 
 def analyze_emotion(text):
    try:
-       openai.api_key = st.sidebar.text_input('Demo key', type='password')
-
        content = f"peux tu me donner seulement une émotion exacte sans commentaire, et si tu ne détecte pas une émotion met 'neutre' sans commentaires : par exemple 'Neutre ou frustration ou colère, ...'?\n{text}"
        messages = [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": content}]
        response = openai.ChatCompletion.create(
