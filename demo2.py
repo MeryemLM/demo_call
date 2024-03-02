@@ -22,7 +22,8 @@ def extract_text_from_pdf(pdf_file_path):
     return text
 # Assuming your PDF extraction happens here
 detected_text = extract_text_from_pdf("./objections.pdf")
-os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
+openai_api_key = st.sidebar.text_input('Demo Key', type='password')
+#os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 texts = text_splitter.create_documents([detected_text])
 directory = "index_store"
