@@ -16,6 +16,8 @@ warnings.filterwarnings("ignore")
  
 # Streamlit page configuration
 st.set_page_config(layout="wide")
+# OpenAI API Key input
+openai.api_key = st.sidebar.text_input('OpenAI API Key', type='password')
  
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_file_path):
@@ -28,21 +30,20 @@ def extract_text_from_pdf(pdf_file_path):
 # Assuming your PDF extraction happens here
 detected_text = extract_text_from_pdf("./objections.pdf")
  
-# OpenAI API Key input
-openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+
  
 # Initialize LangChain components
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 texts = text_splitter.create_documents([detected_text])
  
 directory = "index_store"
-vector_index = FAISS.from_documents(texts, OpenAIEmbeddings(api_key=openai_api_key))
+vector_index = FAISS.from_documents(texts, OpenAIEmbeddings(open.api_key))
 vector_index.save_local(directory)
  
-vector_index = FAISS.load_local("index_store", OpenAIEmbeddings(api_key=openai_api_key))
+vector_index = FAISS.load_local("index_store", OpenAIEmbeddings(openai.api_key))
 retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
 qa_interface = RetrievalQA.from_chain_type(
-    llm=ChatOpenAI(api_key=openai_api_key),
+    llm=ChatOpenAI(openai.api_key),
     chain_type="stuff",
     retriever=retriever,
     return_source_documents=True,
