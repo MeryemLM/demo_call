@@ -30,7 +30,8 @@ def analyze_sentiment_voice(text):
     return sentiment_label
 
 # Set up OpenAI API key
-openai.api_key = "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"
+openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+
 
 def analyze_emotion(text):
    try:
