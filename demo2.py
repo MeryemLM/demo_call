@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 # Streamlit page configuration
 st.set_page_config(layout="wide")
 # OpenAI API Key input
-openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password', value="")
  
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_file_path):
@@ -37,13 +37,13 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20
 texts = text_splitter.create_documents([detected_text])
  
 directory = "index_store"
-vector_index = FAISS.from_documents(texts, OpenAIEmbeddings(open_api_key))
+vector_index = FAISS.from_documents(texts, OpenAIEmbeddings(api_key=open_api_key))
 vector_index.save_local(directory)
  
-vector_index = FAISS.load_local("index_store", OpenAIEmbeddings(openai_api_key))
+vector_index = FAISS.load_local("index_store", OpenAIEmbeddings(api_key=openai_api_key))
 retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
 qa_interface = RetrievalQA.from_chain_type(
-    llm=ChatOpenAI(openai_api_key),
+    llm=ChatOpenAI(api_key=openai_api_key),
     chain_type="stuff",
     retriever=retriever,
     return_source_documents=True,
