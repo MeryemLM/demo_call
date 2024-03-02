@@ -13,6 +13,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import pdfplumber
 import audio_recorder_streamlit as ars
+import openai
 
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_file_path):
