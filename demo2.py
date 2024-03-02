@@ -13,6 +13,8 @@ import warnings
 warnings.filterwarnings("ignore")
 import pdfplumber
 import assemblyai as aai
+import openai
+
 st.set_page_config(layout="wide")
 def extract_text_from_pdf(pdf_file_path):
     text = ""
@@ -22,8 +24,8 @@ def extract_text_from_pdf(pdf_file_path):
     return text
 # Assuming your PDF extraction happens here
 detected_text = extract_text_from_pdf("./objections.pdf")
-#openai_api_key = st.sidebar.text_input('Demo Key', type='password')
-os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
+openai.api_key = st.sidebar.text_input('Demo Key', type='password')
+#os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 texts = text_splitter.create_documents([detected_text])
 directory = "index_store"
