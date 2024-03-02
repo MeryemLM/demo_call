@@ -34,7 +34,7 @@ vector_index.save_local(directory)
 vector_index = FAISS.load_local("index_store", OpenAIEmbeddings(api_key=openai_api_key))
 retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
 qa_interface = RetrievalQA.from_chain_type(
-    llm=ChatOpenAI(),
+    llm=ChatOpenAI(api_key=openai_api_key),
     chain_type="stuff",
     retriever=retriever,
     return_source_documents=True,
