@@ -31,7 +31,7 @@ def extract_text_from_pdf(pdf_file_path):
 def display_image(image_path, width=5):
     st.image(image_path, use_column_width="auto", width=width)
 st.markdown("""
-    <div style='text-align:center;'>
+    <div style='display: flex; flex-direction: column; align-items: center;'>
         <h1 style='color: #A93226; margin-bottom: 0;'>Aide à l'agent</h1>
         <h2 style='color:black; font-style:italic; font-size: smaller; margin-top: 0;'>Votre assistant pour le traitement des objections</h2>
     </div>
