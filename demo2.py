@@ -34,9 +34,9 @@ def display_image(image_path, width=5):
 st.markdown("<h1 style='text-align:center; color: black;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
-    display_image("./logo.png", width=200)
+    display_image("./logo.png", width=550)
 
-    option = st.sidebar.selectbox("Current option", ["Upload audio file"])
+    #option = st.sidebar.selectbox("Current option", ["Upload audio file"])
  
     for _ in range(25):
         st.sidebar.text("")  # Ajouter un espacement
