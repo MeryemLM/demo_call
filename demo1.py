@@ -58,13 +58,9 @@ def main():
     # Titre de l'application
     st.markdown("<h1 style='text-align:center; color: #B01817;'>Transcription audio et analyse émotionnelle</h1>", unsafe_allow_html=True)
     #st.title("Analyse de la transcription audio")
-    with st.sidebar:
-        display_image("./logo2.jpg", width=200)
+    st.sidebar.image("logo2.jpg", use_column_width=True)
 
-    #option = st.sidebar.selectbox("Current option", ["Upload audio file"])
- 
-    for _ in range(25):
-        st.sidebar.text("")
+  
 
     option = st.sidebar.selectbox("Choose an option", ["Upload audio file", "Audio file path"])
 
