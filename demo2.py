@@ -55,7 +55,7 @@ def main():
         unsafe_allow_html=True
     )
 
-    display_image("./logo.png", width=200)
+    display_image("./logo2.jpg", width=200)
 
     openai_api_key = st.text_input('Veuillez insérer la clée fournie pour démonstration', type='password')
     os.environ["OPENAI_API_KEY"] = openai_api_key
