@@ -27,10 +27,11 @@ def extract_text_from_pdf(pdf_file_path):
 
  
 # Function to display an image in the sidebar
-#def display_image(image_path, width=5):
-    #st.image(image_path, use_column_width="auto", width=width)
 
-#st.markdown("<h1 style='text-align:center; color: white;'>Aide à l'agent</h1>", unsafe_allow_html=True)
+def display_image(image_path, width=5):
+    st.image(image_path, use_column_width="auto", width=width)
+
+st.markdown("<h1 style='text-align:center; color: white;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
     #display_image("./majorel-500x300.jpg", width=250)
