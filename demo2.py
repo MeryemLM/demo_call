@@ -108,40 +108,39 @@ def main():
         )
 
                         
-        if option == "Upload audio file":
               # Ajouter un composant pour uploader un fichier audio
-            uploaded_file = st.file_uploader("Uploader un fichier audio", type=["mp3", "wav"])
+        uploaded_file = st.file_uploader("Uploader un fichier audio", type=["mp3", "wav"])
       
               # Créer une rangée pour les boutons "Transcription" et "Emotion"
-            button_col1, button_col2  = st.columns(2)
+        button_col1, button_col2  = st.columns(2)
       
               # Vérifier si un fichier a été uploadé
-            if uploaded_file is not None:
+        if uploaded_file is not None:
                   # Créer un fichier temporaire pour enregistrer l'audio uploadé
-                with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
-                    tmp_file.write(uploaded_file.read())
-                    audio_path = tmp_file.name
+            with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+                tmp_file.write(uploaded_file.read())
+                audio_path = tmp_file.name
       
                   # Boutons pour la transcription et l'analyse de l'émotion
-                if button_col1.button("Lancez la recherche de suggestion") :
+            if button_col1.button("Lancez la recherche de suggestion") :
       
                       # Transcription de l'audio
-                    transcript = transcribe_audio(audio_path)
+                transcript = transcribe_audio(audio_path)
       
-                    for utterance in transcript.utterances:
+                for utterance in transcript.utterances:
                           
-                        st.write(f"<span style='color: blue;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
-                        prompt_message="Please understand the essence of the question, considering synonyms and different ways the question might be phrased. Provide the answer exactly as it appears in the provided documents. If the exact information is not available, or you're not confident in the accuracy of the match, reply with 'None'."
-                        combined_query = f"{prompt_message}\n\nUser's query: {utterance.text}"
+                    st.write(f"<span style='color: blue;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
+                    prompt_message="Please understand the essence of the question, considering synonyms and different ways the question might be phrased. Provide the answer exactly as it appears in the provided documents. If the exact information is not available, or you're not confident in the accuracy of the match, reply with 'None'."
+                    combined_query = f"{prompt_message}\n\nUser's query: {utterance.text}"
                           # Use the combined query with the qa_interface
-                        response = qa_interface(combined_query)
-                        response_text = response["result"]
-                        if response_text.strip() != "None":
+                    response = qa_interface(combined_query)
+                    response_text = response["result"]
+                    if response_text.strip() != "None":
                             #st.write("Suggestion :", response_text)
-                            st.markdown(f'<span style="color:green">Suggestion : </span> {response_text}', unsafe_allow_html=True)
-                        else : 
-                            response_text = None
-                            pass
+                        st.markdown(f'<span style="color:green">Suggestion : </span> {response_text}', unsafe_allow_html=True)
+                    else : 
+                        response_text = None
+                        pass
       
         else:
                   # Message indiquant à l'utilisateur d'uploader un fichier
