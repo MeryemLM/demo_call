@@ -31,18 +31,18 @@ def extract_text_from_pdf(pdf_file_path):
 def display_image(image_path, width=5):
     st.image(image_path, use_column_width="auto", width=width)
 
-st.markdown("<h1 style='text-align:center; color: white;'>Aide à l'agent</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color: black;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
-    #display_image("./majorel-500x300.jpg", width=250)
+    display_image("./Logo-Les-Echos.png", width=250)
 
-    option = st.sidebar.selectbox("Choose an option", ["Upload audio file"])
+    option = st.sidebar.selectbox("Current option", ["Upload audio file"])
  
     for _ in range(25):
         st.sidebar.text("")  # Ajouter un espacement
     
  
-    display_image("./Logo-Les-Echos.png", width=10)
+    #display_image("./Logo-Les-Echos.png", width=10)
  
 
 
