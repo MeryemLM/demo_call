@@ -19,7 +19,7 @@ def extract_text_from_pdf(pdf_file_path):
 
 # Function to display an image in the sidebar
 def display_image(image_path, width=5):
-    st.image(image_path, use_column_width="auto", width=width)
+    st.sidebar.image(image_path, use_column_width="auto", width=width)
 
 # Function to transcribe audio
 def transcribe_audio(audio_path):
@@ -43,20 +43,19 @@ def main():
         </div>
     """, unsafe_allow_html=True)
 
-    with st.sidebar:
-        display_image("./logo.png", width=200)
-
-    # Add CSS to change sidebar color to white
+    # Inject CSS to change sidebar color to white
     st.markdown(
         """
         <style>
         .sidebar .sidebar-content {
-            background-color: #ffffff; /* White color */
+            background-color: #ffffff;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
+
+    display_image("./logo.png", width=200)
 
     openai_api_key = st.text_input('Veuillez insérer la clée fournie pour démonstration', type='password')
     os.environ["OPENAI_API_KEY"] = openai_api_key
@@ -111,3 +110,6 @@ def main():
                             pass
         else:
             st.write("Veuillez uploader un fichier audio pour commencer la transcription.")
+
+if __name__ == "__main__":
+    main()
