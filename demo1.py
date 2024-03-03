@@ -55,10 +55,10 @@ def analyze_emotion(text):
 def main():
      
     # Titre de l'application
-    st.markdown("<h1 style='text-align:center; color: white;'>Analyse de la transcription audio</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align:center; color: white;'>Transcription audio et analyse émotionnelle</h1>", unsafe_allow_html=True)
     #st.title("Analyse de la transcription audio")
 
-    option = st.sidebar.selectbox("Choose an option", ["Upload audio file", "Utilisez le chemin du fichier audio"])
+    option = st.sidebar.selectbox("Choose an option", ["Upload audio file", "Audio file path"])
 
     if option == "Upload audio file":
         
@@ -76,13 +76,13 @@ def main():
                 audio_path = tmp_file.name
 
             # Boutons pour la transcription et l'analyse de l'émotion
-            if button_col1.button("Transcription Texte") :
+            if button_col1.button("Transcription") :
 
                 # Transcription de l'audio
                 transcript = transcribe_audio(audio_path)
 
                 for utterance in transcript.utterances:
-                            st.write(f"<span style='color: blue;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
+                            st.write(f"<span style='color: #922B21;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
                             
             # Bouton "Emotion"
             if button_col2.button("Text-based emotion") and uploaded_file:
@@ -95,7 +95,7 @@ def main():
                     
                     sentiment = analyze_emotion(utterance.text)
                     # Affichage du résultat de l'analyse de sentiment
-                    st.write("L'analyse de l'émotion : ", sentiment)
+                    st.write("Emotion détectée : ", sentiment)
 
             if button_col3.button("Voice-based emotion") and uploaded_file:
                 # Transcription de l'audio
@@ -113,9 +113,9 @@ def main():
             # Message indiquant à l'utilisateur d'uploader un fichier
             st.write("Veuillez uploader un fichier audio pour commencer la transcription.")     
             
-    elif option == "Utilisez le chemin du fichier audio":
+    elif option == "Audio file path":
             
-        audio_url = st.text_input("Enter the URL of the audio file")
+        audio_url = st.text_input("Enter the path of the audio file")
 
         # Boutons pour la transcription et l'analyse de l'émotion
         button_col1, button_col2, button_col3 = st.columns(3)
@@ -128,7 +128,7 @@ def main():
                 transcript = transcribe_audio(audio_url)
 
                 for utterance in transcript.utterances:
-                            st.write(f"<span style='color: blue;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
+                            st.write(f"<span style='color: #922B21;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
                             
             # Bouton "Emotion"
             if button_col2.button("Text-based emotion") and audio_url:
@@ -137,25 +137,25 @@ def main():
                 transcript = transcribe_audio(audio_url)
 
                 for utterance in transcript.utterances:
-                    st.write(f"<span style='color: blue;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
+                    st.write(f"<span style='color: #922B21;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
                     sentiment = analyze_emotion(utterance.text)
 
                     # Affichage du résultat de l'analyse de sentiment
-                    st.write("L'analyse de l'émotion : ", sentiment) 
+                    st.write("Emotion détectée : ", sentiment) 
                 
             if button_col3.button("Voice-based emotion") and audio_url:
                 # Transcription de l'audio
                 transcript = transcribe_audio(audio_url)
 
                 for utterance in transcript.utterances:
-                    st.write(f"<span style='color: blue;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
+                    st.write(f"<span style='color: #922B21;'>Speaker {utterance.speaker}:</span> {utterance.text}", unsafe_allow_html=True)
             
                     # Transcription de l'audio
                     sentiment0 = analyze_sentiment_voice(utterance.text)
                     st.write("Sentiment : ", sentiment0)
         else:
             # Message indiquant à l'utilisateur d'uploader un fichier
-            st.write("Veuillez Entrer le chemin du fichier audio.") 
+            st.write("Please provide the path.") 
 
 if __name__ == "__main__":
     main()
