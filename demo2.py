@@ -41,7 +41,7 @@ st.markdown("""
 #st.markdown("<h2 style='text-align:center; color:black; font-style:italic; font-size: smaller;'>Votre assistant pour le traitement des objections</h2>", unsafe_allow_html=True)
 
 with st.sidebar:
-    display_image("./logo.png", width=550)
+    display_image("./logo.png", width=300, height=200)
 
     #option = st.sidebar.selectbox("Current option", ["Upload audio file"])
  
