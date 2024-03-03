@@ -4,11 +4,7 @@ import speech_recognition as sr
 import tempfile
 import scipy.io.wavfile as wavfile
 import os
-from langchain_community.vectorstores import FAISS
-from langchain_community.chat_models import ChatOpenAI
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.chains import RetrievalQA
+
 import warnings
 warnings.filterwarnings("ignore")
 import pdfplumber
@@ -16,6 +12,8 @@ import assemblyai as aai
 
 #st.set_page_config(page_icon="🎤", page_title="Airbnb", layout="wide")
 st.set_page_config(layout="wide")
+openai_api_key = st.text_input('Demo key', type='password')
+
  
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_file_path):
@@ -68,10 +66,14 @@ def main():
     for _ in range(3):
        st.text("")
     #os.environ["OPENAI_API_KEY"] = st.text_input('Demo key', type='password')
-    openai_api_key = st.text_input('Demo key', type='password')
 
     if openai_api_key:
         os.environ["OPENAI_API_KEY"] = openai_api_key
+        from langchain_community.vectorstores import FAISS
+        from langchain_community.chat_models import ChatOpenAI
+        from langchain.embeddings.openai import OpenAIEmbeddings
+        from langchain.text_splitter import RecursiveCharacterTextSplitter
+        from langchain.chains import RetrievalQA
 
         # Assuming your PDF extraction happens here
         detected_text = extract_text_from_pdf("./objections.pdf")
