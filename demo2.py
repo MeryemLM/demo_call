@@ -27,10 +27,10 @@ def extract_text_from_pdf(pdf_file_path):
 
  
 # Function to display an image in the sidebar
-def display_image(image_path, width=5):
-    st.image(image_path, use_column_width="auto", width=width)
+#def display_image(image_path, width=5):
+    #st.image(image_path, use_column_width="auto", width=width)
 
-st.markdown("<h1 style='text-align:center; color: white;'>Aide à l'agent</h1>", unsafe_allow_html=True)
+#st.markdown("<h1 style='text-align:center; color: white;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
     #display_image("./majorel-500x300.jpg", width=250)
@@ -57,7 +57,6 @@ def transcribe_audio(audio_path):
     transcript = transcriber.transcribe(audio_path, config)
     return transcript
 
-openai_api_key = st.text_input('Demo key', type='password')
 
  
 # Main function
@@ -69,6 +68,7 @@ def main():
     #os.environ["OPENAI_API_KEY"] = st.text_input('Demo key', type='password')
 
     if openai_api_key:
+        openai_api_key = st.text_input('Demo key', type='password')
         os.environ["OPENAI_API_KEY"] = openai_api_key
         from langchain_community.vectorstores import FAISS
         from langchain_community.chat_models import ChatOpenAI
