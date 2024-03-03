@@ -30,10 +30,15 @@ def extract_text_from_pdf(pdf_file_path):
 
 def display_image(image_path, width=5):
     st.image(image_path, use_column_width="auto", width=width)
-
-st.markdown("<h1 style='text-align:center; color: #A93226;'>Aide à l'agent</h1>", unsafe_allow_html=True)
+st.markdown("""
+    <div style='text-align:center;'>
+        <h1 style='color: #A93226; margin-bottom: 0;'>Aide à l'agent</h1>
+        <h2 style='color:black; font-style:italic; font-size: smaller; margin-top: 0;'>Votre assistant pour le traitement des objections</h2>
+    </div>
+""", unsafe_allow_html=True)
+#st.markdown("<h1 style='text-align:center; color: #A93226;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 #st.markdown("<h2 style='text-align:justify; color:black;'>Votre assistant pour le traitement des objections</h2>", unsafe_allow_html=True)
-st.markdown("<h2 style='text-align:center; color:black; font-style:italic; font-size: smaller;'>Votre assistant pour le traitement des objections</h2>", unsafe_allow_html=True)
+#st.markdown("<h2 style='text-align:center; color:black; font-style:italic; font-size: smaller;'>Votre assistant pour le traitement des objections</h2>", unsafe_allow_html=True)
 
 with st.sidebar:
     display_image("./logo.png", width=550)
