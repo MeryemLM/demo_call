@@ -32,7 +32,7 @@ def display_image(image_path, width=5):
     st.image(image_path, use_column_width="auto", width=width)
 st.markdown("""
     <div style='display: flex; flex-direction: column; align-items: center;'>
-        <h1 style='color: #A93226; margin-bottom: 0;'>Aide à l'agent</h1>
+        <h1 style='color: #B01817; margin-bottom: 0;'>Aide à l'agent</h1>
         <h2 style='color:black; font-style:italic; font-size: smaller; margin-top: 0;'>Votre assistant intelligent pour maitriser les objections</h2>
     </div>
 """, unsafe_allow_html=True)
