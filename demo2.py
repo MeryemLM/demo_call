@@ -33,7 +33,7 @@ def display_image(image_path, width=5):
 st.markdown("""
     <div style='display: flex; flex-direction: column; align-items: center;'>
         <h1 style='color: #A93226; margin-bottom: 0;'>Aide à l'agent</h1>
-        <h2 style='color:black; font-style:italic; font-size: smaller; margin-top: 0;'>Votre assistant pour le traitement des objections</h2>
+        <h2 style='color:black; font-style:italic; font-size: smaller; margin-top: 0;'>Votre assistant intelligent pour maitriser les objections</h2>
     </div>
 """, unsafe_allow_html=True)
 #st.markdown("<h1 style='text-align:center; color: #A93226;'>Aide à l'agent</h1>", unsafe_allow_html=True)
@@ -76,7 +76,7 @@ def main():
     #for _ in range(3):
        #st.text("")
  
-    openai_api_key = st.text_input('Demo key', type='password')
+    openai_api_key = st.text_input('Veuillez insérer la clée fournie pour démonstration', type='password')
     os.environ["OPENAI_API_KEY"] = openai_api_key
     #os.environ["OPENAI_API_KEY"] = st.text_input('Demo key', type='password')
     if openai_api_key:
