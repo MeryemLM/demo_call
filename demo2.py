@@ -67,8 +67,8 @@ def main():
     st.markdown("<h1 style='text-align:center; color: black;'>Aide à l'Agent</h1>", unsafe_allow_html=True)
     for _ in range(3):
        st.text("")
-     
-    os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
+    os.environ["OPENAI_API_KEY"] = st.text_input('Demo key', type='password')
+
     # Assuming your PDF extraction happens here
     detected_text = extract_text_from_pdf("./objections.pdf")
     
