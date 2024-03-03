@@ -25,17 +25,7 @@ def extract_text_from_pdf(pdf_file_path):
  
 # Assuming your PDF extraction happens here
 
-st.markdown(
-    """
-<style>
-.sidebar .sidebar-content {
-    background-image: linear-gradient(#2e7bcf,#2e7bcf);
-    color: white;
-}
-</style>
-""",
-    unsafe_allow_html=True,
-)
+
 # Function to display an image in the sidebar
 
 def display_image(image_path, width=5):
