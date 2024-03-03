@@ -45,8 +45,8 @@ with st.sidebar:
 
     #option = st.sidebar.selectbox("Current option", ["Upload audio file"])
  
-    for _ in range(25):
-        st.sidebar.text("")  # Ajouter un espacement
+   for _ in range(25):
+       st.sidebar.text("")  # Ajouter un espacement
     
  
     #display_image("./Logo-Les-Echos.png", width=10)
