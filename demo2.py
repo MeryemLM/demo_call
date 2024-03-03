@@ -109,7 +109,7 @@ def main():
 
                         
               # Ajouter un composant pour uploader un fichier audio
-        uploaded_file = st.file_uploader("Uploader un fichier audio", type=["mp3", "wav"])
+        uploaded_file = st.file_uploader("Téléverser un fichier audio", type=["mp3", "wav"])
       
               # Créer une rangée pour les boutons "Transcription" et "Emotion"
         button_col1, button_col2  = st.columns(2)
