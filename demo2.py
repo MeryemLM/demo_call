@@ -1,5 +1,4 @@
 #WITHOUT NONE
-openai_api_key = st.text_input('Demo key', type='password')
 
 import streamlit as st
 import speech_recognition as sr
@@ -58,6 +57,7 @@ def transcribe_audio(audio_path):
     transcript = transcriber.transcribe(audio_path, config)
     return transcript
 
+openai_api_key = st.text_input('Demo key', type='password')
 
  
 # Main function
