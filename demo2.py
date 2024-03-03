@@ -139,8 +139,8 @@ def main():
         else:
                   # Message indiquant à l'utilisateur d'uploader un fichier
             st.write("Veuillez uploader un fichier audio pour commencer la transcription.") 
-    else:
-        st.warnings("Please enter you demo Key to proceed.")
+    #else:
+        #st.warnings("Please enter you demo Key to proceed.")
  
 if __name__ == "__main__":
     main()
