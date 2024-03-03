@@ -56,7 +56,7 @@ def analyze_emotion(text):
 def main():
      
     # Titre de l'application
-    st.markdown("<h1 style='text-align:center;font-size:large;color: #B01817;'>Transcription audio et analyse émotionnelle</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align:center;font-size:xx-large;color: #B01817;'>Transcription audio et analyse émotionnelle</h1>", unsafe_allow_html=True)
     #st.title("Analyse de la transcription audio")
     st.sidebar.image("logo2.jpg", use_column_width=True)
 
