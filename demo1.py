@@ -31,7 +31,7 @@ def analyze_sentiment_voice(text):
 
 # Set up OpenAI API key
 
-openai.api_key = st.sidebar.text_input('Demo key', type='password')
+openai.api_key = st.sidebar.text_input('Veuillez insérer la clée fournie pour démonstration', type='password')
 
 
 def analyze_emotion(text):
@@ -56,7 +56,7 @@ def analyze_emotion(text):
 def main():
      
     # Titre de l'application
-    st.markdown("<h1 style='text-align:center;font-size:medium;color: #B01817;'>Transcription audio et analyse émotionnelle</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align:center;font-size:large;color: #B01817;'>Transcription audio et analyse émotionnelle</h1>", unsafe_allow_html=True)
     #st.title("Analyse de la transcription audio")
     st.sidebar.image("logo2.jpg", use_column_width=True)
 
