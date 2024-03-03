@@ -122,7 +122,7 @@ def main():
                 audio_path = tmp_file.name
       
                   # Boutons pour la transcription et l'analyse de l'émotion
-            if button_col1.button("Lancez la recherche de suggestion") :
+            if button_col1.button("Lancez le traitement") :
       
                       # Transcription de l'audio
                 transcript = transcribe_audio(audio_path)
