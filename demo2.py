@@ -1,4 +1,6 @@
 #WITHOUT NONE
+openai_api_key = st.text_input('Demo key', type='password')
+
 import streamlit as st
 import speech_recognition as sr
 import tempfile
@@ -12,7 +14,6 @@ import assemblyai as aai
 
 #st.set_page_config(page_icon="🎤", page_title="Airbnb", layout="wide")
 st.set_page_config(layout="wide")
-openai_api_key = st.text_input('Demo key', type='password')
 
  
 # Function to extract text from PDF
