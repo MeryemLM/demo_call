@@ -31,7 +31,7 @@ def extract_text_from_pdf(pdf_file_path):
 def display_image(image_path, width=5):
     st.image(image_path, use_column_width="auto", width=width)
 
-st.markdown("<h1 style='text-align:center; color: red;'>Aide à l'agent</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color: #922B21;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
     display_image("./logo.png", width=550)
