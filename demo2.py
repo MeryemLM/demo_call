@@ -39,7 +39,16 @@ st.markdown("""
 #st.markdown("<h1 style='text-align:center; color: #A93226;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 #st.markdown("<h2 style='text-align:justify; color:black;'>Votre assistant pour le traitement des objections</h2>", unsafe_allow_html=True)
 #st.markdown("<h2 style='text-align:center; color:black; font-style:italic; font-size: smaller;'>Votre assistant pour le traitement des objections</h2>", unsafe_allow_html=True)
-
+st.markdown(
+    """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: #ffffff; /* White color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 with st.sidebar:
    display_image("./logo.png", width=200)
 
