@@ -36,7 +36,6 @@ st.markdown("<h1 style='text-align:center; color: white;'>Aide à l'agent</h1>",
 
 with st.sidebar:
     #display_image("./majorel-500x300.jpg", width=250)
-    os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
 
     option = st.sidebar.selectbox("Choose an option", ["Upload audio file"])
  
@@ -60,25 +59,7 @@ def transcribe_audio(audio_path):
     transcript = transcriber.transcribe(audio_path, config)
     return transcript
 
-# Assuming your PDF extraction happens here
-detected_text = extract_text_from_pdf("./objections.pdf")
 
-
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-texts = text_splitter.create_documents([detected_text])
- 
-directory = "index_store"
-vector_index = FAISS.from_documents(texts, OpenAIEmbeddings())
-vector_index.save_local(directory)
- 
-vector_index = FAISS.load_local("index_store", OpenAIEmbeddings())
-retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
-qa_interface = RetrievalQA.from_chain_type(
-    llm=ChatOpenAI(),
-    chain_type="stuff",
-    retriever=retriever,
-    return_source_documents=True,
-)
  
 # Main function
 def main():
@@ -86,6 +67,28 @@ def main():
     st.markdown("<h1 style='text-align:center; color: black;'>Aide à l'Agent</h1>", unsafe_allow_html=True)
     for _ in range(3):
        st.text("")
+     
+    os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
+    # Assuming your PDF extraction happens here
+    detected_text = extract_text_from_pdf("./objections.pdf")
+    
+    
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    texts = text_splitter.create_documents([detected_text])
+     
+    directory = "index_store"
+    vector_index = FAISS.from_documents(texts, OpenAIEmbeddings())
+    vector_index.save_local(directory)
+     
+    vector_index = FAISS.load_local("index_store", OpenAIEmbeddings())
+    retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
+    qa_interface = RetrievalQA.from_chain_type(
+        llm=ChatOpenAI(),
+        chain_type="stuff",
+        retriever=retriever,
+        return_source_documents=True,
+    )
+
                         
     if option == "Upload audio file":
         # Ajouter un composant pour uploader un fichier audio
