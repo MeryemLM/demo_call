@@ -58,7 +58,10 @@ def transcribe_audio(audio_path):
     return transcript
 
 
- 
+openai_api_key = st.text_input('Demo key', type='password')
+os.environ["OPENAI_API_KEY"] = openai_api_key
+
+
 # Main function
 def main():
 
@@ -66,10 +69,8 @@ def main():
     for _ in range(3):
        st.text("")
     #os.environ["OPENAI_API_KEY"] = st.text_input('Demo key', type='password')
-    openai_api_key = st.text_input('Demo key', type='password')
     if openai_api_key:
         
-        os.environ["OPENAI_API_KEY"] = openai_api_key
         from langchain_community.vectorstores import FAISS
         from langchain_community.chat_models import ChatOpenAI
         from langchain.embeddings.openai import OpenAIEmbeddings
