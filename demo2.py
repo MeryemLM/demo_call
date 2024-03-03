@@ -1,10 +1,8 @@
 #WITHOUT NONE
 import streamlit as st
-import sounddevice as sd
 import speech_recognition as sr
 import tempfile
 import scipy.io.wavfile as wavfile
-#from gtts import gTTS
 import os
 from langchain_community.vectorstores import FAISS
 from langchain_community.chat_models import ChatOpenAI
@@ -40,7 +38,7 @@ with st.sidebar:
     #display_image("./majorel-500x300.jpg", width=250)
     os.environ["OPENAI_API_KEY"] = st.sidebar.text_input('Demo key', type='password')
 
-    option = st.sidebar.selectbox("Choose an option", ["Upload audio file", "Agent Help"])
+    option = st.sidebar.selectbox("Choose an option", ["Upload audio file"])
  
     for _ in range(25):
         st.sidebar.text("")  # Ajouter un espacement
