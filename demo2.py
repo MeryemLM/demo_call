@@ -59,8 +59,7 @@ def transcribe_audio(audio_path):
     return transcript
 
 
-openai_api_key = st.text_input('Demo key', type='password')
-os.environ["OPENAI_API_KEY"] = openai_api_key
+
 
 
 # Main function
@@ -69,6 +68,8 @@ def main():
     st.markdown("<h1 style='text-align:center; color: black;'>Aide à l'Agent</h1>", unsafe_allow_html=True)
     for _ in range(3):
        st.text("")
+    openai_api_key = st.text_input('Demo key', type='password')
+    os.environ["OPENAI_API_KEY"] = openai_api_key
     #os.environ["OPENAI_API_KEY"] = st.text_input('Demo key', type='password')
     if openai_api_key:
         
