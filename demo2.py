@@ -34,7 +34,7 @@ def display_image(image_path, width=5):
 st.markdown("<h1 style='text-align:center; color: black;'>Aide à l'agent</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
-    display_image("./logo.png", width=500)
+    display_image("./logo.png", width=200)
 
     option = st.sidebar.selectbox("Current option", ["Upload audio file"])
  
